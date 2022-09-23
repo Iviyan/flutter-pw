@@ -1,16 +1,20 @@
-# pw
+# Практическая работа №1
+## Тема: Воссоздание макетов figma с использованием flutter
 
-A new Flutter project.
+#### Цель работы: воссоздать [макеты figma](https://www.figma.com/file/E0D9IHkPemq4Rd2tK9kFmw/Untitled) с использованием flutter.
 
-## Getting Started
+#### Ход работы:
 
-This project is a starting point for a Flutter application.
+##### Экран 2
 
-A few resources to get you started if this is your first Flutter project:
+![Экран 2](https://github.com/Iviyan/flutter-pw/blob/pw1/screenshots/Screenshot_20220923_125223.jpg)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+##### Экран 3
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Экран 3](https://github.com/Iviyan/flutter-pw/blob/pw1/screenshots/Screenshot_20220923_125242.jpg)
+
+##### Экран 4
+
+![Экран 4](https://github.com/Iviyan/flutter-pw/blob/pw1/screenshots/Screenshot_20220923_125254.jpg)
+
+#### Вывод: были созданы 3 экрана на основе макетов в figma.
