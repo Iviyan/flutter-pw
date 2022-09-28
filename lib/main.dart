@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pw/screen2.dart';
-import 'package:pw/screen3.dart';
-import 'package:pw/screen4.dart';
+import 'package:pw/meditate_screen.dart';
+import 'package:pw/meditate2_screen.dart';
+import 'package:pw/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
       ),
       home: PageView(
         children: const [
-          Screen2(),
-          Screen3(),
-          Screen4(),
+          MeditateScreen(),
+          Meditate2Screen(),
+          WelcomeScreen(),
         ]
       )
     );

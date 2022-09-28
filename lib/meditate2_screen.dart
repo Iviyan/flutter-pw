@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
-class Screen3 extends StatefulWidget {
-  const Screen3({Key? key}) : super(key: key);
+class Meditate2Screen extends StatefulWidget {
+  const Meditate2Screen({Key? key}) : super(key: key);
 
   @override
-  State<Screen3> createState() => _Screen3State();
+  State<Meditate2Screen> createState() => _Meditate2ScreenState();
 }
 
 var image = Stack(alignment: Alignment.center, children: [
-      Image.asset("assets/screen2/Img1_bg.png"),
-      Image.asset("assets/screen2/Img1.png"),
+      Image.asset("assets/meditate_screen/Img1_bg.png"),
+      Image.asset("assets/meditate_screen/Img1.png"),
     ]);
 
-class _Screen3State extends State<Screen3> {
+class _Meditate2ScreenState extends State<Meditate2Screen> {
   @override
   Widget build(BuildContext context) {
     List<String> filters = ["All", "Bible In a Year", "Dailies", "Minutes", "Noven"];

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Screen4 extends StatefulWidget {
-  const Screen4({Key? key}) : super(key: key);
+class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<Screen4> createState() => _Screen4State();
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _Screen4State extends State<Screen4> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,7 @@ class _Screen4State extends State<Screen4> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Expanded(flex: 4, child: SizedBox()),
+            const Spacer(flex: 4),
             const Text("medinow",
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -40,7 +40,7 @@ class _Screen4State extends State<Screen4> {
                 )
               ),
             ),
-            const Expanded(flex: 1, child: SizedBox()),
+            const Spacer(flex: 1),
             const RoundedButton("Sign in with Apple"),
             const Padding(
               padding: EdgeInsets.only(top: 12),
@@ -53,11 +53,11 @@ class _Screen4State extends State<Screen4> {
                 fontSize: 16,
               ),),
             ),
-            const Expanded(flex: 2, child: SizedBox()),
+            const Spacer(flex: 2),
             
             Expanded(flex: 4, child: Padding(
               padding: const EdgeInsets.only(bottom: 26),
-                child: Image.asset("assets/screen4/Imgb.png")
+                child: Image.asset("assets/welcome_screen/Imgb.png")
               ),
             ),
           ]

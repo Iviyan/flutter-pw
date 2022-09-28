@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Screen2 extends StatefulWidget {
-  const Screen2({Key? key}) : super(key: key);
+class MeditateScreen extends StatefulWidget {
+  const MeditateScreen({Key? key}) : super(key: key);
 
   @override
-  State<Screen2> createState() => _Screen2State();
+  State<MeditateScreen> createState() => _MeditateScreenState();
 }
 
-class _Screen2State extends State<Screen2> {
+class _MeditateScreenState extends State<MeditateScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,8 +22,8 @@ class _Screen2State extends State<Screen2> {
                 Container(
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(36)),
                   child: Stack(alignment: Alignment.center, children: [
-                    Image.asset("assets/screen2/Img1_bg.png"),
-                    Image.asset("assets/screen2/Img1.png"),
+                    Image.asset("assets/meditate_screen/Img1_bg.png"),
+                    Image.asset("assets/meditate_screen/Img1.png"),
                   ]),
                 ),
                 const Padding(
