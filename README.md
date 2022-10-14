@@ -1,16 +1,13 @@
-# pw
+# Практическая работа №2
+## Тема: Создание моделей, сущностей и sql кода создания таблиц в flutter
 
-A new Flutter project.
+#### Цель работы: создать sql код создания таблиц для sqlite, сущности и модели для магазина одежды. 
 
-## Getting Started
+#### Ход работы:
 
-This project is a starting point for a Flutter application.
+- SQL код создания таблиц находится в /lib/common/db_request.dart
+- Сущности находятся в /lib/domain/entity
+- Модели находятся в /lib/data/model
+- Основным классом для взаимодействия с БД является /lib/core/db/db_helper.dart
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### Вывод: был создан sql код создания таблиц для sqlite, сущности и модели для магазина одежды. 

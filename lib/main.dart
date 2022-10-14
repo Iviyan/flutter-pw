@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pw/core/db/db_helper.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DbHelper.instance.init();
+  // print(await DbHelper.instance.db.rawQuery("select * from roles;"));
+
+
   runApp(const MyApp());
 }
 
