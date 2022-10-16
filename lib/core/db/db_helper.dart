@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:pw/common/db_request.dart';
-import 'package:pw/domain/entity/role_entity.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-
+import 'package:pw/domain/entity/role_entity.dart';
 import '../../data/model/role.dart';
 
 class DbHelper {
@@ -23,12 +23,22 @@ class DbHelper {
 
     _dbPath = join(_appDocuentDirectory.path, "store.db");
 
-    db = await openDatabase(
-      _dbPath,
-      version: _version,
-      onCreate: (db, version) => onCreateDb(db),
-      onUpgrade: (db, oldVersion, newVersion) => onUpgradeDb(db),
-    );
+    if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+      sqfliteFfiInit();
+      db = await databaseFactoryFfi.openDatabase(_dbPath,
+          options: OpenDatabaseOptions(
+            version: _version,
+            onCreate: (db, version) => onCreateDb(db),
+            onUpgrade: (db, oldVersion, newVersion) => onUpgradeDb(db),
+          ));
+    } else if (Platform.isAndroid || Platform.isIOS) {
+      db = await openDatabase(
+        _dbPath,
+        version: _version,
+        onCreate: (db, version) => onCreateDb(db),
+        onUpgrade: (db, oldVersion, newVersion) => onUpgradeDb(db),
+      );
+    }
   }
 
   Future<void> onCreateDb(Database db) async {
@@ -50,7 +60,10 @@ class DbHelper {
   Future<void> onDropDb() async {
     await db.close();
 
-    deleteDatabase(_dbPath);
+    if (Platform.isWindows || Platform.isLinux || Platform.isMacOS)
+      deleteDatabase(_dbPath);
+    else if (Platform.isAndroid || Platform.isIOS)
+      await databaseFactoryFfi.deleteDatabase(_dbPath);
   }
 
   Future<void> onUpgradeDb(Database db) async {
