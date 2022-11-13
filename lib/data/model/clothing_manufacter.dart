@@ -1,4 +1,4 @@
-import '../../domain/entity/clothing_manufacter_entity.dart';
+import 'package:pw/domain/entity/clothing_manufacter_entity.dart';
 
 class ClothingManufacter extends ClothingManufacterEntity{
   ClothingManufacter({required super.name});

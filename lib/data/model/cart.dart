@@ -1,4 +1,4 @@
-import '../../domain/entity/cart_entity.dart';
+import 'package:pw/domain/entity/cart_entity.dart';
 
 class Cart extends CartEntity{
   Cart({

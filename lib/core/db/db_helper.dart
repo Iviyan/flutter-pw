@@ -15,23 +15,22 @@ class DbHelper {
   late final Directory _appDocuentDirectory;
   late final String _dbPath;
   late final Database db;
-  final int _version = 1;
+  final int _version = 4;
 
   Future<void> init() async {
     _appDocuentDirectory =
         await path_provider.getApplicationDocumentsDirectory();
 
     _dbPath = join(_appDocuentDirectory.path, "store.db");
-
     db = await openDatabase(
       _dbPath,
       version: _version,
-      onCreate: (db, version) => onCreateDb(db),
-      onUpgrade: (db, oldVersion, newVersion) => onUpgradeDb(db),
+      onCreate: (db, version) async => await onCreateDb(db),
+      onUpgrade: (db, oldVersion, newVersion) async => await onUpgradeDb(db),
     );
   }
 
-  Future<void> onCreateDb(Database db) async {
+  Future onCreateDb(Database db) async {
     for (var sql in DbRequest.createDbSqlList) {
       await db.execute(sql);
     }
@@ -39,25 +38,27 @@ class DbHelper {
     await onInitDb(db);
   }
 
-  Future<void> onInitDb(Database db) async {
+  Future onInitDb(Database db) async {
     //try {
-    for (var roleName in Roles.values) {
-      db.insert(DbRequest.tableRoles, Role(name: roleName.name).toMap());
+    for (var role in Roles.values) {
+      db.insert(
+          DbRequest.tableRoles, Role(id: role.id, name: role.name).toMap());
     }
     //} on DatabaseException catch (e) {}
   }
 
-  Future<void> onDropDb() async {
+  Future onDropDb() async {
     await db.close();
 
-    deleteDatabase(_dbPath);
+    await deleteDatabase(_dbPath);
   }
 
-  Future<void> onUpgradeDb(Database db) async {
+  Future onUpgradeDb(Database db) async {
     var tables = await db.rawQuery('select name from sqlite_master;');
     for (var tableName in DbRequest.createDbSqlList.reversed) {
       if (tables.where((element) => element["name"] == tableName).isNotEmpty) {
         await db.execute(DbRequest.deleteTable(tableName));
+        print("delete $tableName");
       }
     }
 

@@ -1,4 +1,4 @@
-import '../../domain/entity/clothing_model_entity.dart';
+import 'package:pw/domain/entity/clothing_model_entity.dart';
 
 class ClothingModel extends ClothingModelEntity {
   ClothingModel({

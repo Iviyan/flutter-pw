@@ -1,4 +1,4 @@
-import '../../domain/entity/favourite_entity.dart';
+import 'package:pw/domain/entity/favourite_entity.dart';
 
 class Favourite extends FavouriteEntity{
   Favourite({
