@@ -1,3 +1,5 @@
+// ignore_for_file: curly_braces_in_flow_control_structures
+
 import 'package:pw/common/db_request.dart';
 import 'package:pw/core/db/db_helper.dart';
 import 'package:pw/data/model/user.dart';
@@ -14,7 +16,6 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<String, Roles>> signIn(String login, String password) async {
     try {
       var userQuery = await _db.query(DbRequest.tableUsers, 
-        //columns: ['login', 'password', 'role_id'],
         where: "login = ?", whereArgs: [login]
       );
       if (userQuery.isEmpty) return const Left("Пользователя с таким логином не существует");
@@ -30,8 +31,7 @@ class AuthRepoImpl implements AuthRepo {
   Future<String?> signUp(String login, String password, Roles role) async {
     try {
       User user = User(login: login, password: password, role: role);
-      var userMap = user.toMap(); userMap.remove("id");
-      await _db.insert(DbRequest.tableUsers, userMap);
+      await _db.insert(DbRequest.tableUsers, user.toMap(withId: false));
       return null;
     } on DatabaseException catch (err) {
       if (err.isUniqueConstraintError("users.login"))

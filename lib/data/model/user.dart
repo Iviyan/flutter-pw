@@ -1,6 +1,6 @@
+import 'package:pw/data/model/model_extension.dart';
 import 'package:pw/domain/entity/role_entity.dart';
-
-import '../../domain/entity/user_entity.dart';
+import 'package:pw/domain/entity/user_entity.dart';
 
 class User extends UserEntity{
   User({
@@ -10,12 +10,11 @@ class User extends UserEntity{
     required super.role
   });
 
-  Map<String, dynamic> toMap() => {
-    "id": id,
+  Map<String, dynamic> toMap({bool withId = true}) => {
     "login": login,
     "password": password,
     "role_id": role.id
-  };
+  }.withId(id, cancel: !withId);
 
   factory User.fromMap(Map<String, dynamic> json) {
     int roleId = json["role_id"] as int;
