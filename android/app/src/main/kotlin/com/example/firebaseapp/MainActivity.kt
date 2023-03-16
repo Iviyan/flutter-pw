@@ -1,4 +1,4 @@
-package com.example.pw
+package com.example.firebaseapp
 
 import io.flutter.embedding.android.FlutterActivity
 
