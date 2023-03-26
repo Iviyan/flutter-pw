@@ -8,7 +8,7 @@
             "name": "firebaseapp",
             "request": "launch",
             "type": "dart",
-            "args": ["-d", "chrome","--web-port", "61049"]
+            //"args": ["-d", "chrome","--web-port", "61049"]
         },
         {
             "name": "firebaseapp (profile mode)",
