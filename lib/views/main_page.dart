@@ -1,7 +1,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebaseapp/app_router.dart';
-import 'package:firebaseapp/views/main_page_views/notes_view.dart';
+import 'package:firebaseapp/views/main_page_views/images_view.dart';
 import 'package:firebaseapp/views/main_page_views/profile_view.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class _MainPageState extends State<MainPage> {
 
   late final List<Widget> _widgets = <Widget>[
       ProfileView(userCredential: widget.userCredential),
-      NotesView()
+      ImagesView()
     ];
 
   void _onItemTapped(int index) {
@@ -33,7 +33,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notes app'),
+        title: const Text('Images app'),
       ),
       body: Center(
         child: _widgets.elementAt(_selectedIndex),
@@ -46,7 +46,7 @@ class _MainPageState extends State<MainPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Notes',
+            label: 'Images',
           ),
         ],
         currentIndex: _selectedIndex,
