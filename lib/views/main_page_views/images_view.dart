@@ -43,11 +43,6 @@ class _ImagesViewState extends State<ImagesView> {
         // print(">> ${identical(imagesData, event.docs)}"); // false
       });
     });
-    storageRef.listAll().then((value) {
-      value.items.forEach((element) {
-        print(">> ${element.name}");
-      });
-    });
   }
 
   String generateRandomString() => DateTime.now().microsecondsSinceEpoch.toString();
@@ -65,7 +60,7 @@ class _ImagesViewState extends State<ImagesView> {
             // Pick file button using file_picker
             ElevatedButton(onPressed: () async {
               final result = await FilePicker.platform.pickFiles(type: FileType.image, withData: true);
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result?.toString() ?? "null")));
+              //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result?.toString() ?? "null")));
               if (result == null) return;
               final file = result.files.single;
               final name = generateRandomString();
@@ -125,9 +120,8 @@ class _EditableImageState extends State<EditableImage> {
   }
 
   Future<void> initData() async {
-    setState(() async {
-      downloadUrl = await widget.imageRef.getDownloadURL();
-    });
+    final _downloadUrl = await widget.imageRef.getDownloadURL();
+    setState(() { downloadUrl = _downloadUrl; });
   }
 
   void switchEditMode() {
@@ -185,7 +179,7 @@ class _EditableImageState extends State<EditableImage> {
         const SizedBox(height: 4),
         ElevatedButton(onPressed: () async {
             final result = await FilePicker.platform.pickFiles(type: FileType.image, withData: true);
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result?.toString() ?? "null")));
+            //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result?.toString() ?? "null")));
             if (result == null) return;
             final file = result.files.single;
             setState(() {
